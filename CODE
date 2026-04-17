@@ -1,0 +1,15 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from google.colab import files
+uploaded = files.upload()
+df=pd.read_excel("projectdata.xlsx")
+df.info()
+service_cost = df.groupby("Service_Type")["Cost_USD"].sum()
+
+print(service_cost)
+plt.figure(figsize=(7,7))
+
+service_cost.plot(
+    kind="pie",
+    autopct="%1.1f%%"
+)
